@@ -1,0 +1,31 @@
+.header {
+  color: red;
+}
+
+.banner-img {
+  background-image: url(https://images.unsplash.com/photo-1487700160041-babef9c3cb55?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2052&q=80);
+  height: 45vh;
+  background-position: center center;
+  background-size: cover;
+  padding-right: 15vw;
+}
+
+.logo-img {
+  height: 6rem;
+}
+
+.category-text {
+  font-size: 1.2rem;
+  transition: 300ms;
+  text-decoration: none;
+}
+
+.nav-background {
+  background-color: #f5f3f5;
+}
+
+.category-text:hover {
+  cursor: pointer;
+  color: #005e34;
+  transition: 300ms;
+}

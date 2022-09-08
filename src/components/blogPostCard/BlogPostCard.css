@@ -1,0 +1,9 @@
+.blog-img {
+  height: 15rem;
+  object-fit: cover;
+  width: 100%;
+}
+
+.title-text {
+  font-weight: bold;
+}

@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { Link, Outlet } from "react-router-dom"
+import { Header } from "./components/header/Header";
+import { api } from "./services/AxiosService"
+
 
 function App() {
   return (
     <div>
-      <h1>Hello world</h1>
+      <Header></Header>
+      <Outlet></Outlet>
     </div>
   );
 }

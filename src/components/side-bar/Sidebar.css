@@ -1,0 +1,63 @@
+.headshot {
+  width: 100%;
+  object-fit: cover;
+}
+
+h2 {
+  font-weight: bold;
+}
+
+.intro-text {
+  line-height: 1.8rem;
+  text-align: center;
+}
+
+.social-link {
+  font-size: 2rem;
+  transition: 300ms;
+}
+
+.social-link.instagram:hover {
+  color: #E1306C;
+  transition: 300ms;
+  cursor: pointer;
+
+}
+
+.social-link.linkedin:hover {
+  color: #0A66C2;
+  transition: 300ms;
+  cursor: pointer;
+}
+
+.social-link.github:hover {
+  color: #333;
+  transition: 300ms;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.line-after {
+  font-size: 1rem;
+  position: relative;
+}
+
+.line-after span {
+  background-color: white;
+  padding-right: 10px;
+}
+
+.line-after:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0.5em;
+  border-top: 1px solid #198754;
+  z-index: -1;
+}
