@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react'
+import { Link, Route, Routes } from "react-router-dom"
+import BlogPost from "../../pages/BlogPost"
 import './BlogPostCard.css'
 export default function BlogPostCard({ blog }) {
 
@@ -6,20 +8,26 @@ export default function BlogPostCard({ blog }) {
     renderTitle()
     renderExcerpt()
   }, [])
-
   function renderTitle() {
     document.getElementById('title-' + blog.id).innerHTML = blog.title.rendered
   }
-
   function renderExcerpt() {
     document.getElementById('excerpt-' + blog.id).innerHTML = blog.excerpt.rendered
   }
 
+
   return (
     <>
-      <img className="blog-img img-fluid" src={blog._embedded["wp:featuredmedia"][0].source_url}></img>
+      <Routes>
+        <Route path="blog/:id" element={<BlogPost></BlogPost>}></Route>
+      </Routes>
+      <Link to={'./' + blog.id}>
+        <img className="blog-img img-fluid" src={blog._embedded["wp:featuredmedia"][0].source_url}></img>
+      </Link>
       <div>
-        <h5 className="text-success title-text m-0 mt-2" id={'title-' + blog.id}></h5>
+        <Link to={'./' + blog.id}>
+          <h5 className="text-success title-text m-0 mt-2" id={'title-' + blog.id}></h5>
+        </Link>
         <div className="text-muted" id={'excerpt-' + blog.id}></div>
       </div>
     </>

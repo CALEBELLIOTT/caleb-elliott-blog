@@ -11,8 +11,10 @@ export class Header extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.state)
+
   }
+
+  // TODO render bootstrap nav-bar instead. Not mobile responsive
   render() {
     let categories = [{ name: 'Blog', route: '/blog' }, { name: 'Portfolio', route: '/portfolio' }, { name: 'About', route: '/about' }]
     return (
@@ -24,7 +26,9 @@ export class Header extends React.Component {
           <div className="row nav-background">
             <div className="col-12">
               <div className="d-flex p-2 align-items-end justify-content-between">
-                <h1 className="mb-0">Caleb Elliott</h1>
+                <Link to={'/'}>
+                  <h1 className="mb-0">Caleb Elliott</h1>
+                </Link>
                 <div className="d-flex">
                   {categories.map((c) => {
                     return (

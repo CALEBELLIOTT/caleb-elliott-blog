@@ -6,6 +6,7 @@ import Portfolio from "./pages/Portfolio";
 import Blog from "./pages/Blog";
 import './index.css'
 import AboutPage from "./pages/About";
+import BlogPost from "./pages/BlogPost";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -16,6 +17,7 @@ root.render(
         <Route path='/blog' element={<Blog />}></Route>
         <Route path='/portfolio' element={<Portfolio></Portfolio>}></Route>
         <Route path='/about' element={<AboutPage></AboutPage>}></Route>
+        <Route path='/blog/:id' element={<BlogPost></BlogPost>}></Route>
       </Route>
     </Routes>
   </BrowserRouter>
