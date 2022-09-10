@@ -5,30 +5,50 @@ import { api } from "../services/AxiosService"
 
 export default function BlogPost() {
   const params = useParams()
-
   const [blogPost, setBlogPost] = useState({})
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     console.log(params.id);
-    async function getPost() {
-      let res = await api.get('http://moneywithcaleb.com/wp-json/wp/v2/posts/' + params.id + '?_embed')
-      setBlogPost(res.data)
-    }
     getPost()
   }, [])
+
+
+  async function getPost() {
+    try {
+      let res = await api.get('http://moneywithcaleb.com/wp-json/wp/v2/posts/' + params.id + '?_embed')
+      console.log(res.data);
+      setBlogPost(res.data)
+    } catch (error) {
+      console.error(error)
+    } finally {
+      setLoading(false)
+    }
+  }
 
   useEffect(() => {
     renderBlogTitle()
     renderBlogImage()
+    renderBlogContent()
     console.log(blogPost);
   }, [blogPost])
 
   function renderBlogTitle() {
-    document.getElementById("blog-title").innerHTML = blogPost.title?.rendered
+    if (blogPost.title) {
+      document.getElementById("blog-title").innerHTML = blogPost.title?.rendered
+      let date = new Date(blogPost.date).toDateString()
+      document.getElementById('blog-date').innerText = date
+    }
   }
-
   function renderBlogImage() {
-    document.getElementById('blog-img').src = blogPost._embedded["wp:featuredmedia"][0]?.link
+    if (blogPost.title) {
+      document.getElementById('blog-img').src = blogPost._embedded["wp:featuredmedia"][0]?.link
+    }
+  }
+  function renderBlogContent() {
+    if (blogPost.title) {
+      document.getElementById('blog-content').innerHTML = blogPost.content.rendered
+    }
   }
 
   return (
@@ -37,8 +57,11 @@ export default function BlogPost() {
         <div className="row">
           <div className="col-md-8">
             <div className="mt-4">
-              <h4 id="blog-title"></h4>
-              <img src="" id="blog-img"></img>
+              <h4 className="fw-bold" id="blog-title"></h4>
+              <p id="blog-date" className="text-success"></p>
+              <img src="" id="blog-img" className="img-fluid"></img>
+              <div className="mt-5" id="blog-content">
+              </div>
             </div>
           </div>
           <div className="col-md-4">
