@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Link, Route, Routes } from "react-router-dom"
-import BlogPost from "../../pages/BlogPost"
+import BlogPost from "../../pages/blog-post/BlogPost"
 import './BlogPostCard.css'
 export default function BlogPostCard({ blog }) {
 

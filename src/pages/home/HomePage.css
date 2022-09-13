@@ -1,0 +1,30 @@
+.c-img {
+  height: 5rem;
+  margin-right: 2rem;
+  filter: drop-shadow(0px 3px 15px rgba(0, 0, 0, 0.396));
+}
+
+.name-text {
+  letter-spacing: 2rem;
+}
+
+.animate-in {
+  animation: fade-up-in 700ms ease-in-out;
+}
+
+@keyframes fade-up-in {
+  0% {
+    transform: translateY(200px);
+    opacity: 0%;
+  }
+
+  75% {
+    opacity: 100%;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 100%;
+  }
+
+}

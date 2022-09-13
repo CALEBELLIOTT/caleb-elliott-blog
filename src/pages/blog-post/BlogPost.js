@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from "react-router-dom"
-import { Sidebar } from "../components/side-bar/Sidebar"
-import { api } from "../services/AxiosService"
+import { Sidebar } from "../../components/side-bar/Sidebar"
+import { api } from "../../services/AxiosService"
+import './BlogPost.css'
 
 export default function BlogPost() {
   const params = useParams()
@@ -60,7 +61,7 @@ export default function BlogPost() {
               <h4 className="fw-bold" id="blog-title"></h4>
               <p id="blog-date" className="text-success"></p>
               <img src="" id="blog-img" className="img-fluid"></img>
-              <div className="mt-5" id="blog-content">
+              <div className="mt-5 blog-content" id="blog-content">
               </div>
             </div>
           </div>

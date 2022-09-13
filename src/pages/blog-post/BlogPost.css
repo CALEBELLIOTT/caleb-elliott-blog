@@ -1,0 +1,13 @@
+figure {
+  width: 100vw !important;
+}
+
+
+
+@media (max-width: 700px) {
+  .blog-content img {
+    width: 90vw !important;
+    text-align: center !important;
+    object-fit: contain !important;
+  }
+}
