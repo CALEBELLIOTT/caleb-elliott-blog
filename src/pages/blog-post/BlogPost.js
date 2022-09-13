@@ -17,7 +17,7 @@ export default function BlogPost() {
 
   async function getPost() {
     try {
-      let res = await api.get('http://moneywithcaleb.com/wp-json/wp/v2/posts/' + params.id + '?_embed')
+      let res = await api.get('https://moneywithcaleb.com/wp-json/wp/v2/posts/' + params.id + '?_embed')
       console.log(res.data);
       setBlogPost(res.data)
     } catch (error) {
