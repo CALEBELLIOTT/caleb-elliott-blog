@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from "react-router-dom"
 import './HomePage.css'
 
 export default function HomePage() {
@@ -16,8 +17,48 @@ export default function HomePage() {
             </div>
           </div>
           <div className="col-12">
-            <div className="d-flex justify-content-center mt-md-0 mt-5 animate-in">
+            <div className="d-flex flex-column align-items-center mt-md-0 mt-5 animate-in">
               <h3 className="text-muted text-center"><span className="fw-bold text-success me-2 d-none d-md-inline-block">--</span>Full-Stack Software Developer<span className="fw-bold text-success ms-2 d-none d-md-inline-block">--</span></h3>
+              <p className="text-success fade-in-delay">From data architecture to design</p>
+            </div>
+          </div>
+        </div>
+        <div className="row mt-5">
+          <div className="col-md-6">
+            <div className="d-flex flex-column align-items-center fade-in-delay">
+              <h3 className="">Explore My Work</h3>
+              <Link to={'/portfolio'}>
+                <h1><i className="icon mdi mdi-xml text-success"></i></h1>
+              </Link>
+            </div>
+          </div>
+          <div className="col-md-6">
+            <div className="d-flex flex-column align-items-center fade-in-delay">
+              <h3 className="">Contact Me</h3>
+              <a href="mailto:caleb123elliott@gmail.com">
+                <h1><i className="icon mdi mdi-email-outline text-success"></i></h1>
+              </a>
+            </div>
+          </div>
+          <div className="col-12">
+            <div className="mt-5 fade-in-delay">
+              <div className="divider-line bg-success m-auto"></div>
+            </div>
+          </div>
+          <div className="col-12 mt-5">
+            <h3 className="text-center fade-in-delay">My Links</h3>
+            <p className="text-muted text-center fade-in-delay">I am a passionate software developer specializing in full-stack and front-end development.<br />How can I assist in your software needs?</p>
+            <div className="d-flex justify-content-center fade-in-delay">
+              <a href="https://github.com/CALEBELLIOTT" className="mx-4">
+                <h1>
+                  <i className="icon mdi mdi-github text-dark"></i>
+                </h1>
+              </a>
+              <a href="https://www.linkedin.com/in/caleb-elliott1/" className="mx-4">
+                <h1>
+                  <i className="icon mdi mdi-linkedin linkedin-icon"></i>
+                </h1>
+              </a>
             </div>
           </div>
         </div>

@@ -8,9 +8,35 @@
   letter-spacing: 2rem;
 }
 
+.divider-line {
+  width: 50vw;
+  height: 2px;
+  border-radius: 3px;
+}
+
+.linkedin-icon {
+  color: #0A66C2;
+}
+
+.icon {
+  font-size: 3rem;
+}
+
+
+.fade-in-delay {
+  animation: fade-in-delay 2100ms ease-in-out;
+}
+
 .animate-in {
   animation: fade-up-in 700ms ease-in-out;
 }
+
+@media (max-width:750px) {
+  .divider-line {
+    width: 75vw;
+  }
+}
+
 
 @keyframes fade-up-in {
   0% {
@@ -27,4 +53,18 @@
     opacity: 100%;
   }
 
+}
+
+@keyframes fade-in-delay {
+  0% {
+    opacity: 0%;
+  }
+
+  33% {
+    opacity: 1%;
+  }
+
+  100% {
+    opacity: 100%;
+  }
 }
