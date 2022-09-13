@@ -21,12 +21,21 @@
   top: 8rem;
 }
 
+.large-margin {
+  margin-top: 30vh;
+}
+
 @media (max-width: 1035px) {
   .trans-up {
     position: static;
+    align-self: start !important;
   }
 
   .img-container img {
     width: 25rem;
+  }
+
+  .large-margin {
+    margin-top: 5rem;
   }
 }
