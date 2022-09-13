@@ -42,7 +42,7 @@ export default function Portfolio() {
               <li className="me-4 mt-2">Express</li>
               <li className="me-4 mt-2">MongoDB</li>
               <li className="me-4 mt-2">BootStrap</li>
-              <li className="me-4 mt-2">Google AutoFill Api</li>
+              <li className="me-4 mt-2">Google Place Autocomplete Api</li>
               <li className="me-4 mt-2">MapBox</li>
             </ul>
             <div className="d-flex justify-content-around mt-5 align-items-center">
@@ -143,7 +143,10 @@ export default function Portfolio() {
         <div className="row large-margin">
           <div className="col-12">
             <div className="d-flex flex-column align-items-center">
-              <h2 className="text-center">This Website!</h2>
+              <div className="d-flex align-items-center">
+                <h2 className="text-center m-0 me-2">This Website!</h2>
+                <img src="https://i.imgur.com/kS9Dktl.png" className="app-logo" />
+              </div>
               <p className="text-center text-success">This website was built from scratch by me</p>
               <div>
                 <ul className="d-flex flex-wrap justify-content-center">
