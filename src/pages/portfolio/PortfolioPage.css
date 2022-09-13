@@ -1,0 +1,32 @@
+/* .project-img {
+  max-width: 35rem;
+} */
+
+.app-logo {
+  height: 4rem;
+}
+
+.img-container img {
+  width: 35vw
+}
+
+.first-img {
+  position: relative;
+}
+
+.trans-up {
+  /* transform: translateY(-100px); */
+  position: absolute;
+  left: 8rem;
+  top: 8rem;
+}
+
+@media (max-width: 1035px) {
+  .trans-up {
+    position: static;
+  }
+
+  .img-container img {
+    width: 25rem;
+  }
+}
