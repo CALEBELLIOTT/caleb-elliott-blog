@@ -1,0 +1,11 @@
+.blog-img {
+  height: 15rem;
+  object-fit: cover;
+  width: 100%;
+}
+
+.placeholder {
+  min-height: 20rem;
+  border: 5px black solid;
+  min-width: 100%;
+}

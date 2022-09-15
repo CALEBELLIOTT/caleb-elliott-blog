@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import BlogPostCard from "../components/blogPostCard/BlogPostCard"
-import { Sidebar } from "../components/side-bar/Sidebar"
-import { api } from "../services/AxiosService"
+import BlogPostCard from '../../components/blogPostCard/BlogPostCard'
+import LoadingIcon from "../../components/loadingIcon/LoadingIcon"
+import { Sidebar } from "../../components/side-bar/Sidebar"
+import { api } from "../../services/AxiosService"
 
 export default function Blog() {
 
@@ -22,6 +23,18 @@ export default function Blog() {
     return (res.data)
   }
 
+  function Loading() {
+    if (!blogPosts[0]) {
+      return (
+        <>
+          <div className="d-flex justify-content-center">
+            <LoadingIcon />
+          </div>
+        </>
+      )
+    }
+  }
+
   return (
     <>
       <div className="container">
@@ -35,6 +48,10 @@ export default function Blog() {
                   </div>
                 )
               })}</div>
+              <Loading></Loading>
+              <div>
+
+              </div>
             </div>
           </div>
           <div className="col-md-4">

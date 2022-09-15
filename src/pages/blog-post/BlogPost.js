@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from "react-router-dom"
+import LoadingIcon from "../../components/loadingIcon/LoadingIcon"
 import { Sidebar } from "../../components/side-bar/Sidebar"
 import { api } from "../../services/AxiosService"
 import './BlogPost.css'
@@ -52,11 +53,24 @@ export default function BlogPost() {
     }
   }
 
+  function Loading() {
+    if (!blogPost.id) {
+      return (
+        <>
+          <LoadingIcon></LoadingIcon>
+        </>
+      )
+    }
+  }
+
   return (
     <>
       <div className="container">
         <div className="row">
           <div className="col-md-8">
+            <div className="d-flex justify-content-center mt-5">
+              <Loading></Loading>
+            </div>
             <div className="mt-4">
               <h4 className="fw-bold" id="blog-title"></h4>
               <p id="blog-date" className="text-success"></p>

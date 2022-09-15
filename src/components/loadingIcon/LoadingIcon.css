@@ -1,0 +1,29 @@
+.dot {
+  font-size: 3rem;
+}
+
+.dot-1 {
+  animation: load 1.5s linear infinite;
+}
+
+.dot-2 {
+  animation: load 1s 500ms linear infinite;
+}
+
+.dot-3 {
+  animation: load 1s 1s linear infinite;
+}
+
+@keyframes load {
+  0% {
+    opacity: 0%;
+  }
+
+  50% {
+    opacity: 100%;
+  }
+
+  100% {
+    opacity: 0%;
+  }
+}
