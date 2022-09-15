@@ -13,7 +13,7 @@ export default function AboutPage() {
 
   async function getAbout() {
     let aboutPost = axios.create({
-      baseURL: "http://moneywithcaleb.com/wp-json/wp/v2/posts/1?_embed"
+      baseURL: "https://moneywithcaleb.com/wp-json/wp/v2/posts/1?_embed"
     })
     const res = await aboutPost.get('')
     setPost(res.data)

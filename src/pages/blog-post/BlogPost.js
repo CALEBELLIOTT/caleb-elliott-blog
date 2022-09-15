@@ -69,6 +69,7 @@ export default function BlogPost() {
             <Sidebar></Sidebar>
           </div>
         </div>
+        <div className="row"></div>
       </div>
     </>
   )

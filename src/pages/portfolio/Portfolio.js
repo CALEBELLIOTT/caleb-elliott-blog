@@ -1,12 +1,15 @@
 import React from "react"
+import { useNavigate } from "react-router-dom"
 import './PortfolioPage.css'
 
 export default function Portfolio() {
   let projectData = { onTracker: { imgUrls: ['https://i.imgur.com/WqrQ6XT.png', 'https://i.imgur.com/QCTzvZe.png', 'https://i.imgur.com/MtzZE5P.png'], liveSiteUrl: 'https://ontracker-capstone.herokuapp.com/', gitHubUrl: 'https://github.com/CALEBELLIOTT/on-tracker' }, keepr: { imgUrls: ['https://i.imgur.com/KhLgXN7.png', 'https://i.imgur.com/Ora9Yrp.png'], liveSiteUrl: 'https://keeprheroku.herokuapp.com/#/', gitHubUrl: 'https://github.com/CALEBELLIOTT/Keepr' }, allSpice: { imgUrls: ['https://i.imgur.com/dazKQgd.png', 'https://i.imgur.com/BqXICG4.png'], liveSiteUrl: 'https://all-spice-node.herokuapp.com/#/', gitHubUrl: 'https://github.com/CALEBELLIOTT/AllSpiceNode' }, tower: { imgUrls: ['https://i.imgur.com/YzvXamX.png', 'https://i.imgur.com/BiX62np.png'], liveSiteUrl: 'https://tower-codeworks.herokuapp.com/?#/', gitHubUrl: 'https://github.com/CALEBELLIOTT/tower' } }
 
   function routeTo(route) {
-    console.log(route);
+    this.props.history.push(route)
   }
+
+  let navigate = useNavigate()
   return (
     <>
       <div className="container-fluid portfolio-container">
@@ -46,7 +49,9 @@ export default function Portfolio() {
               <li className="me-4 mt-2">MapBox</li>
             </ul>
             <div className="d-flex justify-content-around mt-5 align-items-center">
-              <button className="btn btn-outline-success" onClick={() => { routeTo(projectData.onTracker.liveSiteUrl) }}>Live Site</button>
+              <a href={projectData.onTracker.liveSiteUrl}>
+                <button className="btn btn-outline-success">Live Site</button>
+              </a>
               <h1 className="m-0"><a href={projectData.onTracker.gitHubUrl}><i className="mdi mdi-github"></i></a></h1>
             </div>
           </div>
@@ -75,7 +80,9 @@ export default function Portfolio() {
               <li className="me-4 mt-2">BootStrap</li>
             </ul>
             <div className="d-flex justify-content-around mt-5 align-items-center">
-              <button className="btn btn-outline-success" onClick={() => { routeTo(projectData.keepr.liveSiteUrl) }}>Live Site</button>
+              <a href={projectData.keepr.liveSiteUrl}>
+                <button className="btn btn-outline-success">Live Site</button>
+              </a>
               <h1 className="m-0"><a href={projectData.keepr.gitHubUrl}><i className="mdi mdi-github"></i></a></h1>
             </div>
           </div>
@@ -105,7 +112,9 @@ export default function Portfolio() {
             </ul>
             <p className="text-muted text-center">*I also have another backend built out in .net C# and MySQL that supports most endpoints this version does.</p>
             <div className="d-flex justify-content-around mt-5 align-items-center">
-              <button className="btn btn-outline-success" onClick={() => { routeTo(projectData.allSpice.liveSiteUrl) }}>Live Site</button>
+              <a href={projectData.allSpice.liveSiteUrl}>
+                <button className="btn btn-outline-success">Live Site</button>
+              </a>
               <h1 className="m-0"><a href={projectData.allSpice.gitHubUrl}><i className="mdi mdi-github"></i></a></h1>
             </div>
           </div>
@@ -135,7 +144,9 @@ export default function Portfolio() {
               <li className="me-4 mt-2">BootStrap</li>
             </ul>
             <div className="d-flex justify-content-around mt-5 align-items-center">
-              <button className="btn btn-outline-success" onClick={() => { routeTo(projectData.tower.liveSiteUrl) }}>Live Site</button>
+              <a href={projectData.tower.liveSiteUrl}>
+                <button className="btn btn-outline-success">Live Site</button>
+              </a>
               <h1 className="m-0"><a href={projectData.tower.gitHubUrl}><i className="mdi mdi-github"></i></a></h1>
             </div>
           </div>
