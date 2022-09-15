@@ -1,5 +1,6 @@
 import axios from "axios"
 import React, { useEffect, useState } from 'react'
+import LoadingIcon from "../components/loadingIcon/LoadingIcon"
 import { Sidebar } from "../components/side-bar/Sidebar"
 import { api } from "../services/AxiosService"
 
@@ -38,11 +39,24 @@ export default function AboutPage() {
     }
   }
 
+  function Loading() {
+    if (!post.id) {
+      return (
+        <>
+          <div className="d-flex justify-content-center mt-5">
+            <LoadingIcon></LoadingIcon>
+          </div>
+        </>
+      )
+    }
+  }
+
   return (
     <>
       <div className="container">
         <div className="row">
           <div className="col-md-8">
+            <Loading />
             <div className="mt-4">
               <h4 className="fw-bold" id="blog-title"></h4>
               <p id="blog-date" className="text-success"></p>
