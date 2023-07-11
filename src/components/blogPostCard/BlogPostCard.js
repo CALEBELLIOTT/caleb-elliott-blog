@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useEffect } from 'react'
 import { Link, Route, Routes } from "react-router-dom"
 import BlogPost from "../../pages/blog-post/BlogPost"
@@ -9,26 +10,57 @@ export default function BlogPostCard({ blog }) {
     renderExcerpt()
   }, [])
   function renderTitle() {
-    document.getElementById('title-' + blog.id).innerHTML = blog.title.rendered
+    const {
+      sys: {
+        id = ''
+      } = {},
+      fields: {
+        title
+      }
+    } = blog
+    document.getElementById('title-' + id).innerHTML = title
   }
   function renderExcerpt() {
-    document.getElementById('excerpt-' + blog.id).innerHTML = blog.excerpt.rendered
+    const {
+      sys: {
+        id = ''
+      } = {},
+      fields: {
+        title
+      }
+    } = blog
+    document.getElementById('excerpt-' + id).innerHTML = title
   }
 
+
+  const {
+    sys: {
+      id = ''
+    } = {},
+    fields: {
+      thumbnail: {
+        fields: {
+          file: {
+            url: imageUrl = ''
+          } = {}
+        } = {}
+      } = {}
+    } = {}
+  } = blog
 
   return (
     <>
       <Routes>
         <Route path="blog/:id" element={<BlogPost></BlogPost>}></Route>
       </Routes>
-      <Link to={'./' + blog.id}>
-        <img className="blog-img img-fluid" src={blog._embedded["wp:featuredmedia"][0].source_url}></img>
+      <Link to={'./' + id}>
+        <img className="blog-img img-fluid" src={imageUrl}></img>
       </Link>
       <div>
-        <Link to={'./' + blog.id}>
-          <h5 className="text-success title-text m-0 mt-2" id={'title-' + blog.id}></h5>
+        <Link to={'./' + id}>
+          <h5 className="text-success title-text m-0 mt-2" id={'title-' + id}></h5>
         </Link>
-        <div className="text-muted" id={'excerpt-' + blog.id}></div>
+        <div className="text-muted" id={'excerpt-' + id}></div>
       </div>
     </>
   )

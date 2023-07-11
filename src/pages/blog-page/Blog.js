@@ -1,8 +1,10 @@
+// @ts-nocheck
 import React, { useEffect, useState } from 'react'
 import BlogPostCard from '../../components/blogPostCard/BlogPostCard'
 import LoadingIcon from "../../components/loadingIcon/LoadingIcon"
 import { Sidebar } from "../../components/side-bar/Sidebar"
 import { api } from "../../services/AxiosService"
+import { contentfulService } from "../../services/ContentfulService"
 
 export default function Blog() {
 
@@ -11,16 +13,18 @@ export default function Blog() {
   useEffect(() => {
     const getBlogPosts = async () => {
       let posts = await fetchBlogPosts()
-      posts = posts.filter(p => p.id != 1)
-      setBlogPosts(posts)
+      // posts = posts.filter(p => p.id != 1)
+      setBlogPosts((posts || {}).items)
       console.log(posts);
     }
     getBlogPosts()
   }, [])
 
   async function fetchBlogPosts() {
-    const res = await api.get('')
-    return (res.data)
+    // const res = await api.get('')
+    const res = await contentfulService.getEntries()
+    console.log(res, 'res CE:TEST');
+    return (res)
   }
 
   function Loading() {

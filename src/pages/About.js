@@ -1,8 +1,11 @@
+// @ts-nocheck
 import axios from "axios"
 import React, { useEffect, useState } from 'react'
 import LoadingIcon from "../components/loadingIcon/LoadingIcon"
 import { Sidebar } from "../components/side-bar/Sidebar"
 import { api } from "../services/AxiosService"
+import { contentfulService } from "../services/ContentfulService"
+import moment from "moment"
 
 export default function AboutPage() {
 
@@ -13,11 +16,9 @@ export default function AboutPage() {
   }, [])
 
   async function getAbout() {
-    let aboutPost = axios.create({
-      baseURL: "https://moneywithcaleb.com/wp-json/wp/v2/posts/1?_embed"
-    })
-    const res = await aboutPost.get('')
-    setPost(res.data)
+    const res = await contentfulService.getEntry({ id: '7C09udfQTAKlh5V1LXTSgj' })
+    console.log(res, 'res CE:TEST');
+    setPost(res)
   }
 
   useEffect(() => {
@@ -27,20 +28,36 @@ export default function AboutPage() {
   }, [post])
 
   function renderBlogTitle() {
-    if (post.title) {
-      document.getElementById("blog-title").innerHTML = post.title?.rendered
-      let date = new Date(post.date).toDateString()
+    const {
+      fields: {
+        title = '',
+        publishDate = ''
+      } = {}
+    } = post
+    if (title) {
+      document.getElementById("blog-title").innerHTML = title
+      let date = moment(publishDate).format('MM/DD/YY')
       document.getElementById('blog-date').innerText = date
     }
   }
   function renderBlogContent() {
-    if (post.title) {
-      document.getElementById('blog-content').innerHTML = post.content.rendered
+    const {
+      fields: {
+        title = '',
+      } = {}
+    } = post
+    if (title) {
+      document.getElementById('blog-content').innerHTML = post.fields.body
     }
   }
 
   function Loading() {
-    if (!post.id) {
+    const {
+      sys: {
+        id = ''
+      } = {}
+    } = post
+    if (!id) {
       return (
         <>
           <div className="d-flex justify-content-center mt-5">
