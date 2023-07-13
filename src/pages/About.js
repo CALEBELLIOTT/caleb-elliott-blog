@@ -22,34 +22,10 @@ export default function AboutPage() {
   }
 
   useEffect(() => {
-    renderBlogTitle()
-    renderBlogContent()
     console.log(post);
   }, [post])
 
-  function renderBlogTitle() {
-    const {
-      fields: {
-        title = '',
-        publishDate = ''
-      } = {}
-    } = post
-    if (title) {
-      document.getElementById("blog-title").innerHTML = title
-      let date = moment(publishDate).format('MM/DD/YY')
-      document.getElementById('blog-date').innerText = date
-    }
-  }
-  function renderBlogContent() {
-    const {
-      fields: {
-        title = '',
-      } = {}
-    } = post
-    if (title) {
-      document.getElementById('blog-content').innerHTML = post.fields.body
-    }
-  }
+
 
   function Loading() {
     const {
@@ -68,6 +44,22 @@ export default function AboutPage() {
     }
   }
 
+  const {
+    fields: {
+      title,
+      body,
+      publishDate,
+      updatedDate,
+      thumbnail: {
+        fields: {
+          file: {
+            url: imgUrl
+          } = {}
+        } = {}
+      } = {}
+    } = {}
+  } = post || {}
+
   return (
     <>
       <div className="container">
@@ -75,10 +67,11 @@ export default function AboutPage() {
           <div className="col-md-8">
             <Loading />
             <div className="mt-4">
-              <h4 className="fw-bold" id="blog-title"></h4>
-              <p id="blog-date" className="text-success"></p>
-              <img src="" id="blog-img" className="img-fluid"></img>
-              <div className="mt-2" id="blog-content">
+              <h4 className="fw-bold">{title}</h4>
+              <p className="mb-1">Published: <span className="text-success">{moment(publishDate).format('MM/DD/YY')}</span></p>
+              <p>Updated: <span className="text-success">{moment(updatedDate).format('MM/DD/YY')}</span></p>
+              <img src={imgUrl} className="img-fluid"></img>
+              <div className="mt-2" id="blog-content" dangerouslySetInnerHTML={{ __html: body }}>
               </div>
             </div>
           </div>

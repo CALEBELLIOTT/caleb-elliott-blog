@@ -1,9 +1,23 @@
 .blog-img {
-  height: 15rem;
+  height: auto;
   object-fit: cover;
   width: 100%;
+  border-top-left-radius: 1%;
+  border-top-right-radius: 1%;
 }
 
 .title-text {
   font-weight: bold;
+}
+
+.preview-text {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.blog-post-container {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }

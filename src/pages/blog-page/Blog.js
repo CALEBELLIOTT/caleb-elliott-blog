@@ -10,13 +10,14 @@ export default function Blog() {
 
   const [blogPosts, setBlogPosts] = useState([])
 
+  const getBlogPosts = async () => {
+    let posts = await fetchBlogPosts()
+    // posts = posts.filter(p => p.id != 1)
+    setBlogPosts((posts || {}).items)
+    console.log(posts);
+  }
+
   useEffect(() => {
-    const getBlogPosts = async () => {
-      let posts = await fetchBlogPosts()
-      // posts = posts.filter(p => p.id != 1)
-      setBlogPosts((posts || {}).items)
-      console.log(posts);
-    }
     getBlogPosts()
   }, [])
 
@@ -45,13 +46,21 @@ export default function Blog() {
         <div className="row">
           <div className="col-md-8">
             <div className="mt-4">
-              <div className="row">{blogPosts.map((b) => {
-                return (
-                  <div className="col-md-6">
-                    <BlogPostCard blog={b} key={b.id}></BlogPostCard>
-                  </div>
-                )
-              })}</div>
+              <div className="row">
+                {blogPosts.map((blog) => {
+                  const {
+                    fields: {
+                      settings: {
+                        hideFromBlogPage = false
+                      } = {}
+                    } = {}
+                  } = blog || {}
+                  return !hideFromBlogPage ? (
+                    <div className="col-md-6 col-lg-4">
+                      <BlogPostCard blog={blog} key={blog.id}></BlogPostCard>
+                    </div>
+                  ) : null
+                })}</div>
               <Loading></Loading>
               <div>
 

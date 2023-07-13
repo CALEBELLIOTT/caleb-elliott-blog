@@ -1,9 +1,14 @@
+// @ts-nocheck
 import React, { useEffect, useState } from 'react'
 import { useParams } from "react-router-dom"
 import LoadingIcon from "../../components/loadingIcon/LoadingIcon"
 import { Sidebar } from "../../components/side-bar/Sidebar"
 import { api } from "../../services/AxiosService"
 import './BlogPost.css'
+import { contentfulService } from "../../services/ContentfulService"
+import moment from "moment"
+
+
 
 export default function BlogPost() {
   const params = useParams()
@@ -15,12 +20,11 @@ export default function BlogPost() {
     getPost()
   }, [])
 
-
   async function getPost() {
     try {
-      let res = await api.get('https://moneywithcaleb.com/wp-json/wp/v2/posts/' + params.id + '?_embed')
-      console.log(res.data);
-      setBlogPost(res.data)
+      let res = await contentfulService.getEntry({ id: params.id })
+      console.log(res, 'res here CE:TEST');
+      setBlogPost(res)
     } catch (error) {
       console.error(error)
     } finally {
@@ -28,40 +32,22 @@ export default function BlogPost() {
     }
   }
 
-  useEffect(() => {
-    renderBlogTitle()
-    renderBlogImage()
-    renderBlogContent()
-    console.log(blogPost);
-  }, [blogPost])
 
-  function renderBlogTitle() {
-    if (blogPost.title) {
-      document.getElementById("blog-title").innerHTML = blogPost.title?.rendered
-      let date = new Date(blogPost.date).toDateString()
-      document.getElementById('blog-date').innerText = date
-    }
-  }
-  function renderBlogImage() {
-    if (blogPost.title) {
-      document.getElementById('blog-img').src = blogPost._embedded["wp:featuredmedia"][0]?.link
-    }
-  }
-  function renderBlogContent() {
-    if (blogPost.title) {
-      document.getElementById('blog-content').innerHTML = blogPost.content.rendered
-    }
-  }
-
-  function Loading() {
-    if (!blogPost.id) {
-      return (
-        <>
-          <LoadingIcon></LoadingIcon>
-        </>
-      )
-    }
-  }
+  const {
+    fields: {
+      title,
+      body,
+      publishDate,
+      updatedDate,
+      thumbnail: {
+        fields: {
+          file: {
+            url: imgUrl
+          } = {}
+        } = {}
+      } = {}
+    } = {}
+  } = blogPost || {}
 
   return (
     <>
@@ -69,13 +55,16 @@ export default function BlogPost() {
         <div className="row">
           <div className="col-md-8">
             <div className="d-flex justify-content-center mt-5">
-              <Loading></Loading>
+              {!body && <LoadingIcon />}
             </div>
             <div className="mt-4">
-              <h4 className="fw-bold" id="blog-title"></h4>
-              <p id="blog-date" className="text-success"></p>
-              <img src="" id="blog-img" className="img-fluid"></img>
-              <div className="mt-5 blog-content" id="blog-content">
+              <h4 className="fw-bold">{title}</h4>
+              <p className="mb-1">Published: <span className="text-success">{moment(publishDate).format('MM/DD/YY')}</span></p>
+              {
+                updatedDate && <p>Updated: <span className="text-success">{moment(updatedDate).format('MM/DD/YY')}</span></p>
+              }
+              <img src={imgUrl} className="img-fluid"></img>
+              <div className="mt-5 blog-content" dangerouslySetInnerHTML={{ __html: body }}>
               </div>
             </div>
           </div>

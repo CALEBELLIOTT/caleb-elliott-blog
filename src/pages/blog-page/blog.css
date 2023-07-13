@@ -9,3 +9,15 @@
   border: 5px black solid;
   min-width: 100%;
 }
+
+.mosaic-container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 1rem;
+}
+
+.mosaic-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
