@@ -3,6 +3,8 @@ import React, { useEffect } from 'react'
 import { Link, Route, Routes } from "react-router-dom"
 import BlogPost from "../../pages/blog-post/BlogPost"
 import './BlogPostCard.css'
+import moment from "moment"
+import { BLOG_POST_CATEGORIES } from "../../util/enums"
 export default function BlogPostCard({ blog }) {
 
   const {
@@ -18,13 +20,21 @@ export default function BlogPostCard({ blog }) {
         } = {}
       } = {},
       preview,
-      title
+      title,
+      updatedDate,
+      publishDate,
+      settings: {
+        estimatedReadingTime,
+        categories
+      } = {}
     } = {}
   } = blog
 
+  const formattedUpdatedDate = moment(updatedDate).format('MM/DD/YY')
+  const formattedPublishDate = moment(publishDate).format('MM/DD/YY')
   return (
     <>
-      <div className="blog-post-container">
+      <div className="blog-post-container mb-3">
         <Routes>
           <Route path="blog/:id" element={<BlogPost></BlogPost>}></Route>
         </Routes>
@@ -36,7 +46,12 @@ export default function BlogPostCard({ blog }) {
             <Link to={'./' + id}>
               <h5 className="text-success title-text m-0 mt-2">{title}</h5>
             </Link>
-            <div className="text-muted preview-text">{preview}</div>
+            <p className="mb-2">{updatedDate ? formattedUpdatedDate : formattedPublishDate}</p>
+            <div className="text-muted preview-text">
+              <p className="preview-text">{preview}</p>
+            </div>
+            <p className="mb-0">{estimatedReadingTime} min read</p>
+            <p className="mb-0 text-success">{categories.map(category => BLOG_POST_CATEGORIES[category])}</p>
           </div>
         </div>
       </div>

@@ -18,7 +18,7 @@ export default function HomePage() {
           </div>
           <div className="col-12">
             <div className="d-flex flex-column align-items-center mt-md-0 mt-5 animate-in">
-              <h3 className="text-muted text-center"><span className="fw-bold text-success me-2 d-none d-md-inline-block">--</span>Full-Stack Software Developer<span className="fw-bold text-success ms-2 d-none d-md-inline-block">--</span></h3>
+              <h3 className="text-muted text-center"><span className="fw-bold text-success me-2 d-none d-md-inline-block">--</span>Full-Stack Software Engineer<span className="fw-bold text-success ms-2 d-none d-md-inline-block">--</span></h3>
               <p className="text-success fade-in-delay">From data architecture to design</p>
             </div>
           </div>
@@ -47,7 +47,7 @@ export default function HomePage() {
           </div>
           <div className="col-12 mt-5">
             <h3 className="text-center fade-in-delay">My Links</h3>
-            <p className="text-muted text-center fade-in-delay">I am a passionate software developer specializing in full-stack and front-end development.<br />How can I assist in your software needs?</p>
+            <p className="text-muted text-center fade-in-delay">I am a passionate software engineer specializing in full-stack development.<br />How can I assist in your software needs?</p>
             <div className="d-flex justify-content-center fade-in-delay">
               <a href="https://github.com/CALEBELLIOTT" className="mx-4">
                 <h1>
