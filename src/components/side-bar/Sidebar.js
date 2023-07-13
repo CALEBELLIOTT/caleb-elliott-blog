@@ -20,7 +20,7 @@ export class Sidebar extends React.Component {
             </a>
           </div>
           <p className="text-center text-success mb-3">Software Engineer</p>
-          <p className="intro-text">I am an experienced software developer who loves all things technology. This is my space to share my ideas about tech as well and maybe even a few random things that interest me! Enjoy your time here!</p>
+          <p className="intro-text">I am an experienced software engineer who loves all things technology. This is my space to share my ideas about tech as well and maybe even a few random things that interest me! Enjoy your time here!</p>
         </div>
       </div>
     )

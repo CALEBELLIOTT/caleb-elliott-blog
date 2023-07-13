@@ -50,8 +50,8 @@ export default function BlogPostCard({ blog }) {
             <div className="text-muted preview-text">
               <p className="preview-text">{preview}</p>
             </div>
-            <p className="mb-0">{estimatedReadingTime} min read</p>
-            <p className="mb-0 text-success">{categories.map(category => BLOG_POST_CATEGORIES[category])}</p>
+            <p className="mb-0 preview-text">{estimatedReadingTime} min read</p>
+            <p className="mb-0 text-success preview-text">{categories.map(category => BLOG_POST_CATEGORIES[category])}</p>
           </div>
         </div>
       </div>
